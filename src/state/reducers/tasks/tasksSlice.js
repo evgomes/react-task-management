@@ -3,16 +3,40 @@ import moment from 'moment';
 import { createSlice } from '@reduxjs/toolkit'
 
 import { createTask, getNextOrder } from '../../../services/task-service';
-import { TODO } from '../../../constants/task-status';
+import { TODO, DOING, DONE } from '../../../constants/task-status';
 
 const initialState = [
   createTask({
-    name: "Sample To Do Task",
+    name: "First To Do Task",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     dueDate: moment().add({ days: 7 }).toDate(),
     status: TODO,
     order: 1
-  })
+  }),
+
+  createTask({
+    name: "Second To Do Task",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    dueDate: moment().add({ days: 7 }).toDate(),
+    status: TODO,
+    order: 2
+  }),
+
+  createTask({
+    name: "In Development Task",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    dueDate: moment().add({ days: 7 }).toDate(),
+    status: DOING,
+    order: 1
+  }),
+
+  createTask({
+    name: "Completed Task",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    dueDate: moment().add({ days: 7 }).toDate(),
+    status: DONE,
+    order: 1
+  }),
 ];
 
 export const tasksSlice = createSlice({

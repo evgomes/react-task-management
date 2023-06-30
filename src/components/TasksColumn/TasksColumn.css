@@ -1,0 +1,17 @@
+.task-column {
+    padding: 0.1em 0;
+}
+
+.task-column .task-column-header {
+    padding: 1em 1.5em;
+}
+
+.task-column .task-column-body {
+    margin: 1em 0;
+    padding: 0 1.5em;
+}
+
+.task-column .task-column-footer {
+    display: flex;
+    justify-content: center;
+}
