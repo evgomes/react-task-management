@@ -7,12 +7,24 @@ import AddIcon from '@mui/icons-material/Add';
 import TaskCard from '../TaskCard/TaskCard';
 
 import { useSelector } from 'react-redux'
+import { useState } from 'react';
 
 import './TasksColumn.css';
+import AddTaskDialog from '../AddTaskDialog/AddTaskDialog';
 
 export default function TasksColumn({ status, color }) {
     const tasks = useSelector((state) => state.tasks.filter(note => note.status === status));
     const taskCards = tasks.map((task, index) => <TaskCard key={index} task={task} color={color} />);
+
+    const [open, setOpen] = useState(false);
+
+    const onAddTaskClicked = () => {
+        setOpen(true);
+    }
+
+    const onCloseAddDialog = () => {
+        setOpen(false);
+    }
 
     return (
         <Paper className="task-column" square elevation={3}>
@@ -29,9 +41,10 @@ export default function TasksColumn({ status, color }) {
             }
             <Divider />
             <div className="task-column-footer">
-                <IconButton aria-label="Add" size="large">
+                <IconButton aria-label="Add" size="large" onClick={onAddTaskClicked}>
                     <AddIcon fontSize="inherit" />
                 </IconButton>
+                <AddTaskDialog open={open} onClose={onCloseAddDialog} />
             </div>
         </Paper>
     );
