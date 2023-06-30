@@ -1,23 +1,24 @@
-import logo from './logo.svg';
+import Layout from './components/Layout/Layout';
+import Grid from '@mui/material/Grid';
+import TasksColumn from './components/TasksColumn/TasksColumn';
+
+import { TODO } from './constants/task-status';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Layout>
+      <Grid container spacing={3}>
+        <Grid item xs={4}>
+          <TasksColumn status={TODO} />
+        </Grid>
+        <Grid item xs={4}>
+          Second Column
+        </Grid>
+        <Grid item xs={4}>
+          Third Column
+        </Grid>
+      </Grid>
+    </Layout>
   );
 }
 
