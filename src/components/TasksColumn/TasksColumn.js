@@ -13,7 +13,7 @@ import './TasksColumn.css';
 import AddTaskDialog from '../AddTaskDialog/AddTaskDialog';
 
 export default function TasksColumn({ status, color }) {
-    const tasks = useSelector((state) => state.tasks.filter(note => note.status === status));
+    const tasks = useSelector((state) => state.tasks.filter(note => note.status === status).sort((firstTask, secondTask) => firstTask.order > secondTask.order));
     const taskCards = tasks.map((task, index) => <TaskCard key={index} task={task} color={color} />);
 
     const [open, setOpen] = useState(false);
@@ -44,7 +44,7 @@ export default function TasksColumn({ status, color }) {
                 <IconButton aria-label="Add" size="large" onClick={onAddTaskClicked}>
                     <AddIcon fontSize="inherit" />
                 </IconButton>
-                <AddTaskDialog open={open} onClose={onCloseAddDialog} />
+                <AddTaskDialog open={open} onClose={onCloseAddDialog} status={status} />
             </div>
         </Paper>
     );

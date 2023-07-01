@@ -11,6 +11,9 @@ export function createTask({ name, description, dueDate, status, order }) {
     };
 }
 
-export function getNextOrder(notes) {
-    return notes.map(note => note.order).reduce((prev, next) => Math.max(prev, next), 0) + 1;
+export function getNextOrder(tasks, status) {
+    return tasks
+        .filter(task => task.status === status)
+        .map(task => task.order)
+        .reduce((prev, next) => Math.max(prev, next), 0) + 1;
 }

@@ -45,7 +45,7 @@ export const tasksSlice = createSlice({
   reducers: {
     addTask: (state, action) => {
       const { name, description, dueDate, status } = action.payload;
-      const order = getNextOrder(state.notes);
+      const order = getNextOrder(state, status);
 
       const task = createTask({
         name,
@@ -55,7 +55,7 @@ export const tasksSlice = createSlice({
         order
       });
 
-      state.tasks.push(task);
+      state.push(task);
     }
   },
 })
