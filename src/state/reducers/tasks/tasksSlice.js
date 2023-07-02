@@ -7,7 +7,7 @@ import { TODO, DOING, DONE } from '../../../constants/task-status';
 
 const initialState = [
   createTask({
-    name: "First To Do Task",
+    name: "Example - To Do Task",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     dueDate: moment().add({ days: 7 }).toDate(),
     status: TODO,
@@ -15,25 +15,17 @@ const initialState = [
   }),
 
   createTask({
-    name: "Second To Do Task",
+    name: "Example - In Development Task",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    dueDate: moment().add({ days: 7 }).toDate(),
-    status: TODO,
-    order: 2
-  }),
-
-  createTask({
-    name: "In Development Task",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    dueDate: moment().add({ days: 7 }).toDate(),
+    dueDate: moment().add({ days: 4 }).toDate(),
     status: DOING,
     order: 1
   }),
 
   createTask({
-    name: "Completed Task",
+    name: "Example - Completed Task",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    dueDate: moment().add({ days: 7 }).toDate(),
+    dueDate: moment().add({ days: -5 }).toDate(),
     status: DONE,
     order: 1
   }),

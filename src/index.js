@@ -6,6 +6,8 @@ import reportWebVitals from './reportWebVitals';
 
 import store from './state/store'
 import { Provider } from 'react-redux'
+import { PersistGate } from 'redux-persist/integration/react'
+import { persistStore } from 'redux-persist'
 
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment'
@@ -16,13 +18,17 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
+let persistor = persistStore(store);
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <LocalizationProvider dateAdapter={AdapterMoment}>
-        <App />
-      </LocalizationProvider>
+      <PersistGate loading={null} persistor={persistor}>
+        <LocalizationProvider dateAdapter={AdapterMoment}>
+          <App />
+        </LocalizationProvider>
+      </PersistGate>
     </Provider>
   </React.StrictMode>
 );
