@@ -1,11 +1,11 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
-
 import moment from 'moment';
-import { TODO } from '../../constants/task-status';
-import TaskCard from './TaskCard';
+
+import { render, screen, fireEvent } from '@testing-library/react';
 import MockWrappers from '../../tests/MockWrappers';
-import { waitFor } from '@testing-library/react';
+
+import TaskCard from './TaskCard';
+import { TODO } from '../../constants/task-status';
 
 const task = {
     id: 1,
