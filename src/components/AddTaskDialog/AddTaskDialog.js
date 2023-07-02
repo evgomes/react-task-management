@@ -74,7 +74,7 @@ export default function AddTaskDialog({ open, onClose, status }) {
                     <div className="add-task-dialog-field">
                         <TextField
                             name="name"
-                            label="Name"
+                            label="Name *"
                             onChange={(e) => setName(e.target.value)}
                             onBlur={() => validateName()} />
                         <ErrorMessage message="The name is required." show={hasNameError} />
@@ -82,7 +82,7 @@ export default function AddTaskDialog({ open, onClose, status }) {
                     <div className="add-task-dialog-field">
                         <DatePicker
                             name="dueDate"
-                            label="Due date"
+                            label="Due date *"
                             format="MM/DD/YYYY"
                             onChange={(e) => setDueDate(moment(e).toDate())}
                             onBlur={() => validateDueDate()} />
@@ -93,7 +93,7 @@ export default function AddTaskDialog({ open, onClose, status }) {
                             multiline
                             rows={4}
                             name="description"
-                            label="Description"
+                            label="Description *"
                             onChange={(e) => setDescription(e.target.value)}
                             onBlur={() => validateDescription()}
                         />
