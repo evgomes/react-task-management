@@ -1,24 +1,18 @@
-import Layout from './components/Layout/Layout';
-import Grid from '@mui/material/Grid';
-import TasksColumn from './components/TasksColumn/TasksColumn';
 
-import { TODO, DOING, DONE } from './constants/task-status';
+
+import { Routes, Route } from "react-router-dom";
+import HomePage from './pages/HomePage/HomePage';
+import Layout from "./components/Layout/Layout";
 
 function App() {
   return (
-    <Layout>
-      <Grid container spacing={3} columns={{ xs: 1, md: 3 }}>
-        <Grid item xs={1} md={1}>
-          <TasksColumn status={TODO} color="red" />
-        </Grid>
-        <Grid item xs={1} md={1}>
-          <TasksColumn status={DOING} color="yellow" />
-        </Grid>
-        <Grid item xs={1} md={1}>
-          <TasksColumn status={DONE} color="green" />
-        </Grid>
-      </Grid>
-    </Layout>
+    <Routes>
+      <Route exact path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
+        <Route path="/task/:id" element={<HomePage />} />
+      </Route>
+    </Routes>
+
   );
 }
 

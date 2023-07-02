@@ -12,20 +12,27 @@ import CardContent from '@mui/material/CardContent';
 import DeleteTaskDialog from '../DeleteTaskDialog/DeleteTaskDialog';
 
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import './TaskCard.css';
 
 export default function TaskCard({ task, color }) {
-    const { name, description, dueDate } = task;
+    const { id, name, description, dueDate } = task;
+
     const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
+    const navigate = useNavigate();
 
     const onDeleteTask = () => {
         setIsDeleteDialogOpen(true);
-    }
+    };
 
     const onCloseDeleteDialog = () => {
         setIsDeleteDialogOpen(false);
-    }
+    };
+
+    const onEditTask = () => {
+        navigate(`/task/${id}`, { replace: true });
+    };
 
     return (
         <>
@@ -36,7 +43,7 @@ export default function TaskCard({ task, color }) {
                         justifyContent="space-between"
                         alignItems="center"
                         marginBottom="1em">
-                        <Typography gutterBottom variant="h5" component="div">
+                        <Typography gutterBottom variant="h5" component="div" className="cursor-pointer" onClick={onEditTask}>
                             {name}
                         </Typography>
                         <IconButton aria-label="Delete" size="large" onClick={onDeleteTask}>
@@ -44,11 +51,11 @@ export default function TaskCard({ task, color }) {
                         </IconButton>
                     </Stack>
 
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography variant="body2" color="text.secondary" className="cursor-pointer" onClick={onEditTask}>
                         {description}
                     </Typography>
-                    <div className="due-date">
-                        <Chip icon={<QueryBuilderIcon />} label={`Due date: ${moment(dueDate).format('MM/DD/YYYY')}`} />
+                    <div className="due-date cursor-pointer" onClick={onEditTask}>
+                        <Chip icon={<QueryBuilderIcon />} label={`Due date: ${moment(dueDate).format('MM/DD/YYYY')}`} className="cursor-pointer" />
                     </div>
                 </CardContent>
             </Card>

@@ -11,16 +11,33 @@ import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addTask } from '../../state/reducers/tasks/tasksSlice';
+import { editTask } from '../../state/reducers/tasks/tasksSlice';
 
-export default function AddTaskDialog({ open, onClose, status }) {
-    const [name, setName] = useState('');
+import { useParams, useLocation, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux'
+
+export default function EditTaskDialog() {
+    const location = useLocation();
+    const navigate = useNavigate();
+    const { id } = useParams();
+
+    const open = (location.pathname === `/task/${id}`);
+    const task = useSelector(state => { 
+        const index = state.tasks.findIndex(task => task.id === id);
+        if(index === -1) {
+            return null;
+        }
+
+        return state.tasks[index];
+    });
+
+    const [name, setName] = useState(task?.name || '');
     const [hasNameError, setHasNameError] = useState(false);
 
-    const [dueDate, setDueDate] = useState('');
+    const [dueDate, setDueDate] = useState(task?.dueDate || '');
     const [hasDueDateError, setHasDueDateError] = useState(false);
 
-    const [description, setDescription] = useState('');
+    const [description, setDescription] = useState(task?.description || '');
     const [hasDecriptionError, setHasDecriptionError] = useState(false);
 
     const dispatch = useDispatch();
@@ -50,15 +67,15 @@ export default function AddTaskDialog({ open, onClose, status }) {
         setName('');
         setDueDate('');
         setDescription('');
-        onClose();
+        navigate('/');
     };
 
     const onSubmit = () => {
-        dispatch(addTask({
+        dispatch(editTask({
+            id,
             name,
             description,
             dueDate,
-            status,
         }));
 
         onCloseDialog();
@@ -66,13 +83,14 @@ export default function AddTaskDialog({ open, onClose, status }) {
 
     return (
         <Dialog open={open} onClose={onCloseDialog} className="task-dialog">
-            <DialogTitle>Add Task</DialogTitle>
+            <DialogTitle>Edit Task</DialogTitle>
             <DialogContent className="task-dialog-content">
                 <div className="task-dialog-form">
                     <div className="task-dialog-field">
                         <TextField
                             name="name"
                             label="Name *"
+                            value={name}
                             onChange={(e) => setName(e.target.value)}
                             onBlur={() => validateName()} />
                         <ErrorMessage message="The name is required." show={hasNameError} />
@@ -82,6 +100,7 @@ export default function AddTaskDialog({ open, onClose, status }) {
                             name="dueDate"
                             label="Due date *"
                             format="MM/DD/YYYY"
+                            value={moment(dueDate).utc()}
                             onChange={(e) => setDueDate(moment(e).utc())}
                             onBlur={() => validateDueDate()} />
                         <ErrorMessage message="The due date is required." show={hasDueDateError} />
@@ -92,6 +111,7 @@ export default function AddTaskDialog({ open, onClose, status }) {
                             rows={4}
                             name="description"
                             label="Description *"
+                            value={description}
                             onChange={(e) => setDescription(e.target.value)}
                             onBlur={() => validateDescription()}
                         />
@@ -103,6 +123,6 @@ export default function AddTaskDialog({ open, onClose, status }) {
                 <Button onClick={onCloseDialog}>Cancel</Button>
                 <Button onClick={onSubmit} disabled={!canSubmit()}>Save</Button>
             </DialogActions>
-        </Dialog >
+        </Dialog>
     );
 }

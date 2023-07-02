@@ -5,6 +5,8 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { blue } from '@mui/material/colors';
 
+import { Outlet } from 'react-router-dom';
+
 import './Layout.css';
 
 const theme = createTheme({
@@ -13,7 +15,7 @@ const theme = createTheme({
     },
 });
 
-export default function Layout({ children }) {
+export default function Layout() {
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline />
@@ -25,7 +27,7 @@ export default function Layout({ children }) {
                 </Toolbar>
             </AppBar>
             <main>
-                {children}
+                <Outlet />
             </main>
         </ThemeProvider>
     );

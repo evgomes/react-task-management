@@ -27,25 +27,27 @@ export default function TasksColumn({ status, color }) {
     }
 
     return (
-        <Paper className="task-column" square elevation={3}>
-            <div className="task-column-header">
-                <Typography variant="h4" color="inherit">
-                    {status}
-                </Typography>
-            </div>
-            <Divider />
-            {
-                tasks.length > 0 && <div className="task-column-body">
-                    {taskCards}
+        <>
+            <Paper className="task-column" square elevation={3}>
+                <div className="task-column-header">
+                    <Typography variant="h4" color="inherit">
+                        {status}
+                    </Typography>
                 </div>
-            }
-            <Divider />
-            <div className="task-column-footer">
-                <IconButton aria-label="Add" size="large" onClick={onAddTaskClicked}>
-                    <AddIcon fontSize="inherit" />
-                </IconButton>
-                <AddTaskDialog open={isAddDialogOpen} onClose={onCloseAddDialog} status={status} />
-            </div>
-        </Paper>
+                <Divider />
+                {
+                    tasks.length > 0 && <div className="task-column-body">
+                        {taskCards}
+                    </div>
+                }
+                <Divider />
+                <div className="task-column-footer">
+                    <IconButton aria-label="Add" size="large" onClick={onAddTaskClicked}>
+                        <AddIcon fontSize="inherit" />
+                    </IconButton>
+                    <AddTaskDialog open={isAddDialogOpen} onClose={onCloseAddDialog} status={status} />
+                </div>
+            </Paper>
+        </>
     );
 }
