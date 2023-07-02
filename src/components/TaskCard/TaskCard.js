@@ -61,6 +61,5 @@ export default function TaskCard({ task, color }) {
             </Card>
             <DeleteTaskDialog open={isDeleteDialogOpen} onClose={onCloseDeleteDialog} task={task} />
         </>
-
     );
 }
