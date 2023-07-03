@@ -20,10 +20,10 @@ The application is built using the following technologies:
 
 You need Node.js installed on your machine to run the application. After installing it, open the application on terminal or command prompt and run the following commands:
 
-`
+```
 npm install
 npm run start
-`
+```
 
 Navigate to `http://localhost:3000` to see the application.
 
