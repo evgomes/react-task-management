@@ -29,6 +29,14 @@ Navigate to `http://localhost:3000` to see the application.
 
 To run tests, run the command `npm run test`. There are tests for the main features of the application.
 
+![Home Page](https://raw.githubusercontent.com/evgomes/react-task-management-test/main/images/home-page.png)
+
+![Add Task](https://raw.githubusercontent.com/evgomes/react-task-management-test/main/images/add-task.png)
+
+![Edit Task](https://raw.githubusercontent.com/evgomes/react-task-management-test/main/images/edit-task.png)
+
+![Delete Task](https://raw.githubusercontent.com/evgomes/react-task-management-test/main/images/delete-task.png)
+
 # Features
 
 The application renders a Kanban structure with three columns: To Do, Doing, and Done. You can add tasks to each columns. You can also visualize and edit tasks by clicking in the task name or description. You can also delete tasks from each column.
