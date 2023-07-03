@@ -6,14 +6,15 @@ Simple task management application built with React.js.
 
 The application is built using the following technologies:
 
-* React.js
-* Redux (using the React Redux library)
-* Material UI
-* React Router
-* UUID
-* Moment.js
-* Jest
-* React Testing Library
+* [React.js](https://react.dev/)
+* [Redux](https://react-redux.js.org/) (via the official React binding for Redux)
+* [Redux Persist](https://github.com/rt2zz/redux-persist) (to persist the application state using local storage)
+* [Material UI](https://mui.com/) (UI framework)
+* [React Router](https://reactrouter.com/en/main) (to navigate when showing task details in edit mode)
+* [uuid](https://github.com/uuidjs/uuid) (to fake task IDs)
+* [Moment.js](https://momentjs.com/) (to handle task due dates)
+* [Jest](https://jestjs.io/pt-BR/) (to test components)
+* [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) (to test components)
 
 # How to Run the Application
 
