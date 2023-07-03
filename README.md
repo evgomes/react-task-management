@@ -29,12 +29,16 @@ Navigate to `http://localhost:3000` to see the application.
 
 To run tests, run the command `npm run test`. There are tests for the main features of the application.
 
+**Main view**
 ![Home Page](https://raw.githubusercontent.com/evgomes/react-task-management-test/main/images/home-page.png)
 
+**Add task dialog**
 ![Add Task](https://raw.githubusercontent.com/evgomes/react-task-management-test/main/images/add-task.png)
 
+**Edit task dialog**
 ![Edit Task](https://raw.githubusercontent.com/evgomes/react-task-management-test/main/images/edit-task.png)
 
+**Delete task dialog**
 ![Delete Task](https://raw.githubusercontent.com/evgomes/react-task-management-test/main/images/delete-task.png)
 
 # Features
